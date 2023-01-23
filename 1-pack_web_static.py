@@ -8,9 +8,6 @@ from datetime import datetime
 from fabric.api import local, env
 from os.path import isdir
 
-env.user = 'ubuntu'
-env.hosts = ['54.165.12.83', '54.237.93.128']
-
 
 def do_pack():
     """Generates archive file from contents of Clone repo"""
