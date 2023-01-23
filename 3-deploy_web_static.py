@@ -41,7 +41,8 @@ def do_deploy(archive_path):
         # Create target filename without extension
         file_name_ext = archive_path.split("/")[-1]
         tar_file_name = file_name_ext.split(".")[0]
-        run('sudo mkdir -p /data/web_static/releases/{}/'.format(tar_file_name))
+        run('sudo mkdir -p /data/web_static/releases/{}/'.
+            format(tar_file_name))
         # Uncompress archive and delete archive from web server
         run('sudo tar -xzf /tmp/{} -C /data/web_static/releases/{}/'.
             format(file_name_ext, tar_file_name))
@@ -58,8 +59,8 @@ def do_deploy(archive_path):
         # Delete existing symbolic link
         run('sudo rm -rf /data/web_static/current')
         # Reestablish symbolic link with new content folder
-        sym_link = 'sudo ln -s /data/web_static/releases/{}/ /data/web_static/current'.\
-            format(tar_file_name)
+        sym_link = 'sudo ln -s /data/web_static/releases/{}/' \
+                   ' /data/web_static/current'.format(tar_file_name)
         run(sym_link)
         print('New version deployed!')
         return True
