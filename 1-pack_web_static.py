@@ -6,6 +6,7 @@ web_static folder of my AirBnB clone repo
 
 from datetime import datetime
 from fabric.api import local, env
+from os.path import isdir
 
 env.user = 'ubuntu'
 env.hosts = ['54.165.12.83', '54.237.93.128']
@@ -20,9 +21,9 @@ def do_pack():
                                                               dt.hour,
                                                               dt.minute,
                                                               dt.second)
-    try:
-        local("mkdir -p versions")
-        local("tar -cvzf {} web_static".format(file_name))
-        return "{}".format(file_name)
-    except Exception:
+    if isdir("versions") is False:
+        if local("mkdir -p versions").failed is True:
+            return None
+    if local("tar -cvzf {} web_static".format(file_name)).failed is True:
         return None
+    return file_name
