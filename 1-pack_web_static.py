@@ -5,14 +5,14 @@ web_static folder of my AirBnB clone repo
 """
 
 from datetime import datetime
-from fabric.api import local, env
+from fabric.api import local
 from os.path import isdir
 
 
 def do_pack():
     """Generates archive file from contents of Clone repo"""
     dt = datetime.utcnow()
-    file_name = "versions/web_static_{}{}{}{}{}{}.tqz".format(dt.year,
+    file_name = "versions/web_static_{}{}{}{}{}{}.tgz".format(dt.year,
                                                               dt.month,
                                                               dt.day,
                                                               dt.hour,
