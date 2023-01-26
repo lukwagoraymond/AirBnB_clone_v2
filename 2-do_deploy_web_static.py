@@ -8,6 +8,8 @@ from os.path import exists
 from fabric.api import put, run, env
 
 env.hosts = ['54.165.12.83', '54.237.93.128']
+env.user = 'ubuntu'
+env.key_filename = '~/.ssh/id_rsa'
 
 
 def do_deploy(archive_path):
