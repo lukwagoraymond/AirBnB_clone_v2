@@ -1,16 +1,18 @@
 #!/usr/bin/python3
 """ Script starts a Flask Web Application
-Web Application listening on 0.0.0.0, port 5000
+listening on 0.0.0.0, port 5000
 """
 
 from flask import Flask
 
-app = Flask(__name__)
+app = Flask("__name__")
+
 
 @app.route('/', strict_slashes=False)
 def hello():
     """Displays string below"""
     return "Hello HBNB!"
 
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='5000', debug=None)
+    app.run(host="0.0.0.0", port=5000, debug=None)
