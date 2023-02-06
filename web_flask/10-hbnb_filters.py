@@ -17,11 +17,13 @@ def state_list():
     states = models.storage.all(State).values()
     return render_template('7-states_list.html', states=states)
 
+
 @app.route('/cities_by_states', strict_slashes=False)
 def list_state_cities():
     """Displays HTML of states and its cities"""
     states = models.storage.all(State).values()
     return render_template('8-cities_by_states.html', states=states)
+
 
 @app.route('/states/<id>', strict_slashes=False)
 def state_id(id):
@@ -36,12 +38,14 @@ def state_id(id):
             break
     return render_template('9-states.html', states=states, flag=flag)
 
+
 @app.route('/hbnb_filters', strict_slashes=False)
 def filters():
     """List all the states and its cities in dinamic content"""
     states = models.storage.all(State).values()
     am = models.storage.all(Amenity).values()
     return render_template('10-hbnb_filters.html', states=states, amenities=am)
+
 
 @app.teardown_appcontext
 def teardown(db):

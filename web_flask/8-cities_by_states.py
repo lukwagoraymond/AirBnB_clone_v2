@@ -16,11 +16,13 @@ def state_list():
     states = models.storage.all(State).values()
     return render_template('7-states_list.html', states=states)
 
+
 @app.route('/cities_by_states', strict_slashes=False)
 def list_state_cities():
     """Displays HTML of states and its cities"""
     states = models.storage.all(State).values()
     return render_template('8-cities_by_states.html', states=states)
+
 
 @app.teardown_appcontext
 def teardown(db):
