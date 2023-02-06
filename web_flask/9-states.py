@@ -24,6 +24,13 @@ def list_state_cities():
     return render_template('8-cities_by_states.html', states=states)
 
 
+@app.route('/states', strict_slashes=False)
+def list_states():
+    """Displays HTML of states Chronologically"""
+    states = models.storage.all(State).values()
+    return render_template('7-states_list.html', states=states)
+
+
 @app.route('/states/<id>', strict_slashes=False)
 def state_id(id):
     """Displays HTML of States based on id"""
@@ -45,4 +52,4 @@ def teardown(db):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=56733)
